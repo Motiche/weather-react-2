@@ -148,3 +148,11 @@ footer {
   font-family: monospace;
   text-align: center;
 }
+
+.loader {
+  height: 45%;
+  width: 45%;
+  margin: auto;
+  margin-left: 30%;
+  margin-top: 10%;
+}

@@ -1,7 +1,8 @@
 import "./index.css";
 import React, { useState } from "react";
 import axios from "axios";
-
+import { Puff } from "react-loading-icons";
+import FormattedDate from "./FormattedDate";
 export default function SelectedWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const apiKey = "4t46b93oa4b0a2872a4342a90af06e55";
@@ -16,7 +17,7 @@ export default function SelectedWeather(props) {
       wind: response.data.daily[0].wind.speed,
       description: response.data.daily[0].condition.description,
       icon_url: response.data.daily[0].condition.icon_url,
-      time: response.data.daily[0].time,
+      time: new Date(response.data.daily[0].time * 1000),
     });
   }
 
@@ -28,7 +29,9 @@ export default function SelectedWeather(props) {
             {weatherData.city}
           </h1>
           <div>
-            <h2 id="selected_city">Time</h2>
+            <h2 id="selected_city">
+              <FormattedDate date={weatherData.time} />
+            </h2>
           </div>
           <img src={weatherData.icon_url} class="emoji" id="Weather-icon" />
         </div>
@@ -57,6 +60,6 @@ export default function SelectedWeather(props) {
     );
   } else {
     axios.get(apiURL).then(handleResponse);
-    return "Loading...";
+    return <Puff className="loader" />;
   }
 }
