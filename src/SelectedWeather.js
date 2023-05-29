@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Puff } from "react-loading-icons";
 import FormattedDate from "./FormattedDate";
+// import { store, useGlobalState } from "state-pool";
+
 export default function SelectedWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const apiKey = "4t46b93oa4b0a2872a4342a90af06e55";
+
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${props.city}&key=${apiKey}&unit=metric`;
   function handleResponse(response) {
     console.log(response.data);
@@ -23,43 +26,57 @@ export default function SelectedWeather(props) {
 
   if (weatherData.ready) {
     return (
-      <div className="card align-items-center p-0 m-0">
-        <div className="col-6 p-0 m-0 float-left">
-          <h1 id="City" className="text-capitalize">
-            {weatherData.city}
-          </h1>
-          <div>
-            <h2 id="selected_city">
-              <FormattedDate date={weatherData.time} />
-            </h2>
-          </div>
-          <img src={weatherData.icon_url} class="emoji" id="Weather-icon" />
-        </div>
-        <div className="col-6 p-0 m-0 float-right">
-          <p>
-            <div id="Looks">
-              <b>{weatherData.description}</b>
+      <div className="card card-body col-md-6 pr-0 mr-0 mt-4 ml-0">
+        <div className="containter">
+          <div className="row align-items-center p-0 m-0">
+            <div className="text-capitalize float-left col-md-6 p-0 ml-2">
+              <h1 id="City">{weatherData.city}</h1>
+              <h2 id=" selected_city">
+                <FormattedDate date={weatherData.time} />
+              </h2>
+              <img
+                src={weatherData.icon_url}
+                className="emoji"
+                id="Weather-icon"
+                alt="Weather Icon"
+              />
             </div>
-            Tempreture:{Math.round(weatherData.temperature)}
-            <span class="Temp" id="Temp-now">
-              °C
-            </span>
-            <br />
-            Todays feel:{" "}
-            <span class="Temp" id="feel">
-              ?°C
-            </span>
-            <br />
-            Wind Speed: <span id="wind">{weatherData.wind} km/h</span>
-            <br />
-            Humidity: <span id="humidity">{weatherData.humidity}%</span>
-            <br />
-          </p>
+            <div className="card-text text-capitalize float-right col-md-6 p-0">
+              <p>
+                <div id="Looks">
+                  <b>{weatherData.description}</b>
+                </div>
+                Tempreture:{Math.round(weatherData.temperature)}
+                <span className="Temp" id="Temp-now">
+                  °C
+                </span>
+                <br />
+                Todays feel:{" "}
+                <span className="Temp" id="feel">
+                  ?°C
+                </span>
+                <br />
+                Wind Speed: <span id="wind">{weatherData.wind} km/h</span>
+                <br />
+                Humidity: <span id="humidity">{weatherData.humidity}%</span>
+                <br />
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
   } else {
     axios.get(apiURL).then(handleResponse);
-    return <Puff className="loader" />;
+    return (
+      <div class="col-md-6 pr-0 mr-0 mt-4">
+        <Puff
+          className="loader"
+          stroke="#16537e"
+          strokeOpacity={0.125}
+          speed={0.75}
+        />
+      </div>
+    );
   }
 }

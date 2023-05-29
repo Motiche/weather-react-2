@@ -24,9 +24,8 @@ root.render(
         </div>
       </div>
       <div class="row main">
-        <div class="col-md-12 col-lg-6 d-none d-md-block pr-0 mr-0 mt-4">
-          <SelectedWeather class="p-0" city="london" />
-        </div>
+        <SelectedWeather city="london" />
+
         <div class="col-md-12 col-lg-6 d-none d-md-block pr-0 mr-0 mt-4">
           <WeatherChart />
         </div>
