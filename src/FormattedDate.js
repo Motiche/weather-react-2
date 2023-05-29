@@ -18,9 +18,13 @@ export default function FormattedDate(props) {
   if (Date.minutes < 10) {
     Date.minutes = `0${Date.minutes}`;
   }
-  return (
-    <div>
-      {Date.day} {Date.hour}:{Date.minutes}
-    </div>
-  );
+  if (props.Day) {
+    return <div>{Date.day}</div>;
+  } else {
+    return (
+      <div>
+        {Date.day} {Date.hour}:{Date.minutes}
+      </div>
+    );
+  }
 }

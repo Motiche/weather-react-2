@@ -9,35 +9,38 @@ import ForcastCard from "./ForcastCard";
 import WeatherChart from "./WeatherChart";
 import "bootstrap/dist/css/bootstrap.css";
 import reportWebVitals from "./reportWebVitals";
+import { CityProvider } from "./CityData";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div class="container-md centered">
-      <div class="row">
-        <div class="col-md-3">
-          <UnitChange />
-        </div>{" "}
-        <div class="col-md-2 d-none d-md-block"></div>
-        <div class="col-md-7">
-          <SearchBox />
+    <CityProvider>
+      <div class="container-md centered">
+        <div class="row">
+          <div class="col-md-3">
+            <UnitChange />
+          </div>{" "}
+          <div class="col-md-2 d-none d-md-block"></div>
+          <div class="col-md-7">
+            <SearchBox />
+          </div>
         </div>
-      </div>
-      <div class="row main">
-        <SelectedWeather city="london" />
+        <div class="row main">
+          <SelectedWeather city="london" />
 
-        <div class="col-md-12 col-lg-6 d-none d-md-block pr-0 mr-0 mt-4">
-          <WeatherChart />
+          <div class="col-md-12 col-lg-6 d-none d-md-block m-4">
+            <WeatherChart />
+          </div>
+        </div>
+        <div class="row" id="forcast-cards">
+          <ForcastCard />
         </div>
       </div>
-      <div class="row" id="forcast-cards">
-        <ForcastCard />
-      </div>
-    </div>
-    <footer>
-      Developed by Motiche <b>𓅓</b>, Available on{" "}
-      <a href="https://github.com/Motiche/weather-react">Github</a>
-    </footer>
+      <footer>
+        Developed by Motiche <b>𓅓</b>, Available on{" "}
+        <a href="https://github.com/Motiche/weather-react">Github</a>
+      </footer>
+    </CityProvider>
   </React.StrictMode>
 );
 

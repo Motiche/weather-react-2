@@ -157,9 +157,8 @@ footer {
   margin-top: 10%;
 }
 
-.selected {
-  margin-left: 10px !important;
-  margin-right: 10px !important;
-  padding-left: 10px !important;
-  padding-right: 0px !important;
+.loader {
+  height: 200px;
+  width: 200px;
+  position: absolute;
 }
