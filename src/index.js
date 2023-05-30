@@ -38,7 +38,7 @@ root.render(
       </div>
       <footer>
         Developed by Motiche <b>𓅓</b>, Available on{" "}
-        <a href="https://github.com/Motiche/weather-react">Github</a>
+        <a href="https://github.com/Motiche/weather-react-2">Github</a>
       </footer>
     </CityProvider>
   </React.StrictMode>
