@@ -5,7 +5,6 @@ import CityContext from "./CityData";
 
 export default function Search_city() {
   const { WeatherData } = useContext(CityContext);
-  const { ChangeWeatherData } = useContext(CityContext);
   /// Celcius to Farenheit
   function C_to_F(temp) {
     let F = temp * 1.8 + 32;

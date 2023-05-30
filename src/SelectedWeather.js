@@ -14,7 +14,7 @@ export default function SelectedWeather(props) {
 
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${WeatherData.city}&key=${apiKey}&unit=metric`;
   function handleResponse(response) {
-    console.log(response.data);
+    //console.log(response.data);
     ChangeWeatherData({
       ready: true,
       city: response.data.city,

@@ -1,8 +1,28 @@
 import React, { useContext } from "react";
 import CityContext from "./CityData";
+import axios from "axios";
 import "./index.css";
-// CHANGE
+
 export default function SearchBox() {
+  var Coords = {};
+
+  function handleResponse(response) {
+    console.log(response.data);
+    ChangeWeatherData({ city: response.data.city, ready: false });
+  }
+
+  function handleCoordinate() {
+    function handlePosition(position) {
+      Coords.lat = position.coords.latitude;
+      Coords.lon = position.coords.longitude;
+      const apiKey = "4t46b93oa4b0a2872a4342a90af06e55";
+      let apiURL = `https://api.shecodes.io/weather/v1/current?lon=${Coords.lon}&lat=${Coords.lat}&key=${apiKey}&unit=metric`;
+      console.log(apiURL);
+      axios.get(apiURL).then(handleResponse);
+    }
+    navigator.geolocation.getCurrentPosition(handlePosition);
+  }
+
   const { WeatherData } = useContext(CityContext);
   const { ChangeWeatherData } = useContext(CityContext);
   let city = WeatherData.city;
@@ -29,7 +49,12 @@ export default function SearchBox() {
       <button class="btn btn-outline-dark" type="submit" id="button-addon2">
         Search 🔍
       </button>
-      <button class="btn btn-outline-info" type="button" id="My-coords">
+      <button
+        class="btn btn-outline-info"
+        type="button"
+        id="My-coords"
+        onClick={handleCoordinate}
+      >
         My Location 📍
       </button>
     </form>
