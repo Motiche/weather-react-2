@@ -44,6 +44,8 @@ export default function ForcastCard() {
                 </p>
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </div>

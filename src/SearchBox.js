@@ -39,18 +39,18 @@ export default function SearchBox() {
     <form id="Search-City" class="input-group mb-3" onSubmit={handleSubmit}>
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         placeholder="Enter the City..."
         aria-label="Enter the City..."
         aria-describedby="button-addon2"
         id="Input-city"
         onChange={handleCityChange}
       />
-      <button class="btn btn-outline-dark" type="submit" id="button-addon2">
+      <button className="btn btn-outline-dark" type="submit" id="button-addon2">
         Search 🔍
       </button>
       <button
-        class="btn btn-outline-info"
+        className="btn btn-outline-info"
         type="button"
         id="My-coords"
         onClick={handleCoordinate}
