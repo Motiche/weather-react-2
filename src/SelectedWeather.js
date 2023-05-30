@@ -52,15 +52,18 @@ export default function SelectedWeather(props) {
                 <div id="Looks">
                   <b>{WeatherData.description}</b>
                 </div>
-                Tempreture: {Math.round(WeatherData.temperature)}
+                Tempreture:{" "}
                 <span className="Temp" id="Temp-now">
-                  °C
+                  {Math.round(WeatherData.temperature)}°C
                 </span>
                 <br />
-                Todays feel: {Math.round(WeatherData.min)} -{" "}
-                {Math.round(WeatherData.max)}
+                Todays feel:{" "}
+                <span className="Temp" id="Temp-now">
+                  {Math.round(WeatherData.min)}
+                </span>{" "}
+                -{" "}
                 <span className="Temp" id="feel">
-                  °C
+                  {Math.round(WeatherData.max)}°C
                 </span>
                 <br />
                 Wind Speed: <span id="wind">{WeatherData.wind} km/h</span>

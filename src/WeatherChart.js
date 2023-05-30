@@ -24,7 +24,7 @@ function WeatherChart() {
     const Weekdays_Tempreture = [];
     const Weekdays_Wind_Speed = [];
     const Weekdays_Humidity = [];
-    console.log(WeatherData.daily);
+    //console.log(WeatherData.daily);
     for (const [i, Day] of WeatherData.daily.entries()) {
       Weekdays.push(toDay(new Date(Day.time * 1000)));
       Weekdays_Tempreture.push(Day.temperature.day);

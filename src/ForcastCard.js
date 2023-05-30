@@ -34,7 +34,10 @@ export default function ForcastCard() {
                   <span class="Forcast-desc">{Day.condition.description}</span>
                   <br />
                   <span class="Temp Prediction">
-                    {Math.round(Day.temperature.minimum)} -{" "}
+                    {Math.round(Day.temperature.minimum)}
+                  </span>{" "}
+                  -{" "}
+                  <span class="Temp Prediction">
                     {Math.round(Day.temperature.maximum)}
                     °C
                   </span>
